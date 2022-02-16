@@ -27,9 +27,6 @@ stages:
 - stage: build
   jobs:
   - job: Publish_Build_Configuration
-    pool:
-      name: NetCore1ESPool-Public
-      demands: ImageOverride -equals build.windows.10.amd64.vs2019.open
     steps:
     - publish: $(Build.SourcesDirectory)\eng\BuildConfiguration
       artifact: BuildConfiguration
@@ -37,9 +34,6 @@ stages:
   - template: /eng/build.yml
     parameters:
       agentOs: Windows_NT
-      pool:
-        name: NetCore1ESPool-Public
-        demands: ImageOverride -equals build.windows.10.amd64.vs2019.open
       timeoutInMinutes: 180
       strategy:
         matrix:
@@ -74,9 +68,6 @@ stages:
   - template: /eng/build.yml
     parameters:
       agentOs: Windows_NT
-      pool:
-        name: NetCore1ESPool-Public
-        demands: ImageOverride -equals build.windows.10.amd64.vs2019.open
       timeoutInMinutes: 180
       strategy:
         matrix:
@@ -99,9 +90,6 @@ stages:
   - template: /eng/build.yml
     parameters:
       agentOs: Linux
-      pool:
-        name: NetCore1ESPool-Public
-        demands: ImageOverride -equals Build.Ubuntu.1804.Amd64.Open
       timeoutInMinutes: 180
       strategy:
         matrix:
@@ -195,9 +183,6 @@ stages:
   - template: /eng/build.yml
     parameters:
       agentOs: Linux
-      pool:
-        name: NetCore1ESPool-Public
-        demands: ImageOverride -equals Build.Ubuntu.1804.Amd64.Open
       timeoutInMinutes: 180
       strategy:
         matrix:
@@ -214,8 +199,6 @@ stages:
   - template: /eng/build.yml
     parameters:
       agentOs: Darwin
-      pool:
-        vmImage: 'macOS-10.15'
       timeoutInMinutes: 180
       strategy:
         matrix:
